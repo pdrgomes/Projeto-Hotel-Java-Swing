@@ -111,4 +111,22 @@ final class DaoServico implements DaoBase<Servicos> {
 		return servicos;
 	}
 
+	@Override
+	public List<Servicos> findAllOcupados() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Servicos> findAllDisponiveis() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void checkout(Servicos object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -107,4 +107,22 @@ final class DaoMetodoPagamento implements DaoBase<MetodoPagamento> {
 		return hospedes;
 	}
 
+	@Override
+	public List<MetodoPagamento> findAllOcupados() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MetodoPagamento> findAllDisponiveis() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void checkout(MetodoPagamento object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

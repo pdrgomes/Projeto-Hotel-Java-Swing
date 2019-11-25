@@ -1,11 +1,14 @@
 package Pesquisas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.JList;
@@ -29,13 +32,22 @@ public class QuartosOcupados extends JInternalFrame {
 		lblQuartosOcupados.setBounds(174, 11, 245, 39);
 		getContentPane().add(lblQuartosOcupados);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(107, 98, 312, 20);
-		getContentPane().add(comboBox);
+		JLabel lblSAIR = new JLabel("SAIR");
+		lblSAIR.setForeground(new Color(128, 0, 0));
+		lblSAIR.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblSAIR.setBounds(458, 11, 46, 14);
+		lblSAIR.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				sair();
+			}
+		});
+		getContentPane().add(lblSAIR);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(107, 169, 312, 20);
-		getContentPane().add(comboBox_1);
+		Object[] serv = DaoSupplier.getDaoQuarto().findAllOcupados().toArray() ;
+		JComboBox comboBox = new JComboBox(serv);
+		comboBox.setBounds(37, 96, 481, 20);
+		getContentPane().add(comboBox);
 	}
 	private DefaultListModel<QuartoDados> loadList() { 
 		List<QuartoDados> qrt = DaoSupplier.getDaoRegistrarQuarto().findAll();
@@ -46,6 +58,11 @@ public class QuartosOcupados extends JInternalFrame {
 		}
 		
 		return modelo;
+	}
+	
+	public void sair() {
+		this.doDefaultCloseAction();
+
 	}
 	
 }

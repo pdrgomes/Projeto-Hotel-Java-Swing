@@ -3,35 +3,31 @@ package Hotel;
 public class QuartoDados {
 
 	private int id;
-	private String nomeHospede;
-	private int numeroQuarto;
-	private TipoQuarto tipoQuarto;
+	private Hospede idHospede;
+	private Quarto idQuarto;
 	private int diaria;
 	private double valor;
+	
+
+	public Hospede getIdHospede() {
+		return idHospede;
+	}
+	public void setIdHospede(Hospede idHospede) {
+		this.idHospede = idHospede;
+	}
+	public Quarto getIdQuarto() {
+		return idQuarto;
+	}
+	public void setIdQuarto(Quarto idQuarto) {
+		this.idQuarto = idQuarto;
+	}
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNomeHospede() {
-		return nomeHospede;
-	}
-	public void setNomeHospede(String nomeHospede) {
-		this.nomeHospede = nomeHospede;
-	}
-	public int getNumeroQuarto() {
-		return numeroQuarto;
-	}
-	public void setNumeroQuarto(int numeroQuarto) {
-		this.numeroQuarto = numeroQuarto;
-	}
-	public TipoQuarto getTipoQuarto() {
-		return tipoQuarto;
-	}
-	public void setTipoQuarto(TipoQuarto tipoQuarto) {
-		this.tipoQuarto = tipoQuarto;
-	}
+	
 	public int getDiaria() {
 		return diaria;
 	}
@@ -46,9 +42,11 @@ public class QuartoDados {
 	}
 	@Override
 	public String toString() {
-		return  "Hospede=" + nomeHospede + ", Numero Quarto=" + numeroQuarto
-				+ ", Tipo Quarto=" + tipoQuarto + ", Diária=" + diaria + ", Valor=" + valor + "]";
+		return "ID: " + id + "  ||*|| Hospede: " + idHospede + "   ||*|| Quarto: " + idQuarto + "   ||*|| Diária: " + diaria
+				+ "  ||*|| Total: " + valor ;
 	}
+	
+	
 	
 	
 }

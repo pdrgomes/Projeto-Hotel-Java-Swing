@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Hotel.Evento;
@@ -26,11 +27,12 @@ public class RegistrarQuarto extends JInternalFrame {
 	private JTextField diaria;
 	private JTextField valorTotal;
 	private Evento onClose;
-	private JComboBox comboBox;
+	private JComboBox quartoCombo;
+	private JComboBox hospCombo;
 
 	
 	public RegistrarQuarto() {
-		setBounds(100, 100, 457, 448);
+		setBounds(100, 100, 635, 448);
 		getContentPane().setLayout(null);
 		
 		JLabel lblQuarto = new JLabel("Quarto");
@@ -88,15 +90,15 @@ public class RegistrarQuarto extends JInternalFrame {
 		
 		
 		//COMBOBOX 
-		Object[] tipoQuarto = DaoSupplier.getDaoTipoQuarto().findAll().toArray() ;
-		comboBox = new JComboBox(tipoQuarto);
-		comboBox.setBounds(39, 186, 328, 22);
-		getContentPane().add(comboBox);
+		Object[] quarto = DaoSupplier.getDaoQuarto().findAll().toArray() ;
+		quartoCombo = new JComboBox(quarto);
+		quartoCombo.setBounds(39, 186, 543, 22);
+		getContentPane().add(quartoCombo);
 		
 		Object[] hosp = DaoSupplier.getDaoHospede().findAll().toArray() ;
-		JComboBox comboBox_1 = new JComboBox(hosp);
-		comboBox_1.setBounds(39, 116, 328, 25);
-		getContentPane().add(comboBox_1);
+		hospCombo = new JComboBox(hosp);
+		hospCombo.setBounds(39, 116, 543, 25);
+		getContentPane().add(hospCombo);
 		
 		JLabel lblHospede = new JLabel("Hospede");
 		lblHospede.setBounds(39, 97, 46, 14);
@@ -125,16 +127,28 @@ public class RegistrarQuarto extends JInternalFrame {
 		
 		for (Quarto quarto : quartos) {
 			modelo.addElement(quarto);
+			System.out.println("Quarto" + quarto.toString());
 		}
 		
 		return modelo;
 	}
 	public void inserirDados() {
 		QuartoDados qrt = new QuartoDados();
-		qrt.setTipoQuarto((TipoQuarto) comboBox.getSelectedItem());
+
+		qrt.setIdHospede((Hospede) hospCombo.getSelectedItem());
+		qrt.setIdQuarto((Quarto) quartoCombo.getSelectedItem());
 		qrt.setDiaria(Integer.parseInt(diaria.getText()));
 		qrt.setValor(Double.parseDouble(valorTotal.getText()));
 		
-		DaoSupplier.getDaoRegistrarQuarto().insert(qrt);
+		if(qrt.getIdQuarto().isStatusQuarto() == false) {
+			DaoSupplier.getDaoQuarto().update(qrt.getIdQuarto());
+			DaoSupplier.getDaoRegistrarQuarto().insert(qrt);
+			sair();		
+			JOptionPane.showMessageDialog(null, "Quarto registrado para o usuário: "+ qrt.getIdHospede().getNome());
+		}else {
+			JOptionPane.showMessageDialog(null, "Quarto já esta registrado para outro usuário");
+		}
+		
+		
 	}
 }

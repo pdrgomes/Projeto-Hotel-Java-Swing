@@ -107,4 +107,22 @@ final class DaoTipoQuarto implements DaoBase<TipoQuarto> {
 		return quartos;
 	}
 
+	@Override
+	public List<TipoQuarto> findAllOcupados() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TipoQuarto> findAllDisponiveis() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void checkout(TipoQuarto object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

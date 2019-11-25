@@ -6,17 +6,23 @@ import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Cadastrar.CadastrarCamareira;
 import Cadastrar.CadastrarServico;
 import Cadastrar.CadastroHospede;
 import Cadastrar.CadastroMetodoPagamento;
 import Cadastrar.CadastroQuarto;
 import Cadastrar.CadastroTipoQuarto;
+import Checkout.CamareiraDisponivel;
+import Checkout.CamareiraOcupada;
+import Checkout.DesignarCamareira;
 import Designar.ComprarServico;
 import Designar.RegistrarQuarto;
 import Pesquisas.PesquisaHospede;
 import Pesquisas.PesquisaServicos;
 import Pesquisas.PesquisarQuarto;
+import Pesquisas.QuartosDisponiveis;
 import Pesquisas.QuartosOcupados;
+import Relatorio.ExportCsv;
 import dao.DaoSupplier;
 
 import javax.swing.JMenuBar;
@@ -122,6 +128,15 @@ public class Hotel extends JFrame {
 		mnCadastros.add(mntmCadastrarQuarto);
 		
 		
+		JMenuItem mntmCadastrarCamareira = new JMenuItem("Cadastrar Camareira");
+		mntmCadastrarCamareira.addActionListener(event -> {
+			CadastrarCamareira cadHospede = new CadastrarCamareira();
+			contentPane.add(cadHospede);
+			cadHospede.setVisible(true);
+		});
+		mnCadastros.add(mntmCadastrarCamareira);
+		
+		
 		//CADASTRAR SERVIÇOS
 		JMenuItem mntmCadastrarServios = new JMenuItem("Cadastrar Servi\u00E7os");
 		mntmCadastrarServios.addActionListener(event -> {
@@ -205,9 +220,15 @@ public class Hotel extends JFrame {
 		mnPesquisar.add(menuItem);
 		
 		JMenuItem mntmQuartosDisponveis = new JMenuItem("Quartos dispon\u00EDveis");
+		mntmQuartosDisponveis.addActionListener(event -> {
+			QuartosDisponiveis qrt = new QuartosDisponiveis();
+			contentPane.add(qrt);
+			qrt.setVisible(true);
+		});
 		mnPesquisar.add(mntmQuartosDisponveis);
 		
 		
+
 		//QUARTOS OCUPADOS
 		JMenuItem mntmQuartosOcupados = new JMenuItem("Quartos ocupados");
 		mntmQuartosOcupados.addActionListener(event -> {
@@ -217,16 +238,54 @@ public class Hotel extends JFrame {
 		});
 		mnPesquisar.add(mntmQuartosOcupados);
 		
-		JMenuItem mntmServiosDisponveis = new JMenuItem("Servi\u00E7os dispon\u00EDveis");
-		mnPesquisar.add(mntmServiosDisponveis);
 		
 		JMenu mnRelatrio = new JMenu("Relat\u00F3rio");
 		mnRelatrio.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 16));
 		mnRelatrio.setForeground(Color.DARK_GRAY);
 		menuBar.add(mnRelatrio);
 		
-		JMenuItem mntmServiosConsumidos = new JMenuItem("Servi\u00E7os consumidos");
-		mnRelatrio.add(mntmServiosConsumidos);
+		JMenuItem mntmRelatorioReservas = new JMenuItem("Relatorio de Reservas");
+		mntmRelatorioReservas.addActionListener(event -> {
+			ExportCsv exp = new ExportCsv();
+			contentPane.add(exp);
+			exp.setVisible(true);
+		});
+		mnRelatrio.add(mntmRelatorioReservas);
+		
+		
+		//CHECKOUT
+		JMenu mCheckout = new JMenu("Checkout");
+		mCheckout.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 16));
+		mCheckout.setForeground(Color.BLACK);
+		menuBar.add(mCheckout);
+		
+		JMenuItem mntmCamareirasDisponiveis = new JMenuItem("Camareiras Disponíveis");
+		mntmCamareirasDisponiveis.addActionListener(event -> {
+			CamareiraDisponivel serv = new CamareiraDisponivel();
+			contentPane.add(serv);
+			serv.setVisible(true);
+		});
+		mCheckout.add(mntmCamareirasDisponiveis);
+		
+		JMenuItem mntmCamareirasOcupadas = new JMenuItem("Camareiras Ocupadas");
+		mntmCamareirasOcupadas.addActionListener(event -> {
+			CamareiraOcupada serv = new CamareiraOcupada();
+			contentPane.add(serv);
+			serv.setVisible(true);
+		});
+		mCheckout.add(mntmCamareirasOcupadas);
+		
+	
+		
+		JMenuItem mntmDesignarQuartoCamareira = new JMenuItem("Designar Quarto Camareira");
+		mntmDesignarQuartoCamareira.addActionListener(event -> {
+			DesignarCamareira DesigCam = new DesignarCamareira();
+			contentPane.add(DesigCam);
+			DesigCam.setVisible(true);
+		});
+		mCheckout.add(mntmDesignarQuartoCamareira);
+		
+		
 		
 		JMenu mnFinalizar = new JMenu("Finalizar");
 		mnFinalizar.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 16));

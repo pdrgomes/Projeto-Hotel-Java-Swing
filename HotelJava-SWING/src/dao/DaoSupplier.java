@@ -1,6 +1,8 @@
 package dao;
 
 
+import Hotel.Camareira;
+import Hotel.Comprar;
 import Hotel.Hospede;
 import Hotel.MetodoPagamento;
 import Hotel.Quarto;
@@ -28,6 +30,12 @@ public class DaoSupplier {
 	}
 	public static DaoBase<QuartoDados> getDaoRegistrarQuarto() {
 		return new DaoRegistrarQuarto();
+	}
+	public static DaoBase<Comprar> getDaoComprar() {
+		return new DaoComprar();
+	}
+	public static DaoBase<Camareira> getDaoCamareira() {
+		return new DaoCamareira();
 	}
 	
 }

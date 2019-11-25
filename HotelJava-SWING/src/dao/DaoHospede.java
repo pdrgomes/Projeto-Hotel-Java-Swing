@@ -122,4 +122,22 @@ final class DaoHospede implements DaoBase<Hospede> {
 		return hospedes;
 	}
 
+	@Override
+	public List<Hospede> findAllOcupados() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Hospede> findAllDisponiveis() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void checkout(Hospede object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

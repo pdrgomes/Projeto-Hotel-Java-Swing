@@ -20,17 +20,16 @@ final class DaoRegistrarQuarto implements DaoBase<QuartoDados> {
 	@Override
 	public void insert(QuartoDados object) {
 		
-		String query = " insert into registrarquartos (nome ,numeroq, idtipoquarto, diaria, total)" + " values (?,?,?,?,?)";
+		String query = " insert into registrarquartos (idHospede, idQuarto, diaria, total)" + " values (?,?,?,?)";
 		
 		PreparedStatement preparedStmt = null;
 		try {
 			preparedStmt = ConnectionMySql.getConn().prepareStatement(query);
-			preparedStmt.setString(1, object.getNomeHospede());
-			preparedStmt.setInt(2, object.getNumeroQuarto());
-			preparedStmt.setInt(3, object.getTipoQuarto().getId());
-			preparedStmt.setInt(4, object.getDiaria());
-			preparedStmt.setDouble(5, object.getValor());
-		
+			preparedStmt.setInt(1, object.getIdHospede().getId());
+			preparedStmt.setInt(2, object.getIdQuarto().getId());
+			preparedStmt.setInt(3, object.getDiaria());
+			preparedStmt.setDouble(4, object.getValor());
+	
 			preparedStmt.execute();
 			preparedStmt.close();
 		} catch (SQLException e) {
@@ -41,20 +40,20 @@ final class DaoRegistrarQuarto implements DaoBase<QuartoDados> {
 
 	@Override
 	public void update(QuartoDados object) {
-		String query = " update registrarquartos set nome = ? where id = ?";
-		
-		PreparedStatement preparedStmt = null;
-		try {
-			preparedStmt = ConnectionMySql.getConn().prepareStatement(query);
-			preparedStmt.setInt(1, object.getId());
-//			preparedStmt.setString(2, object.getNomeServico() );
+//		String query = " update registrarquartos set idHospede = ? where id = ?";
+//		
+//		PreparedStatement preparedStmt = null;
+//		try {
+//			preparedStmt = ConnectionMySql.getConn().prepareStatement(query);
+//			preparedStmt.setInt(1, object.getId());
+//  		preparedStmt.setString(2, object.getNomeServico() );
 //			preparedStmt.setDouble(3, object.getPrecoServico());
-			preparedStmt.execute();
-			preparedStmt.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//			preparedStmt.execute();
+//			preparedStmt.close();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 	}
 
@@ -79,11 +78,10 @@ final class DaoRegistrarQuarto implements DaoBase<QuartoDados> {
 				
 				quartos = new QuartoDados();
 				quartos.setId(rs.getInt("id"));
-				quartos.setNomeHospede(rs.getString("nome"));
-				quartos.setNumeroQuarto(rs.getInt("NUMEROQ"));
-				quartos.setTipoQuarto(DaoSupplier.getDaoTipoQuarto().findById(rs.getInt("idTipoQuarto")));
+				quartos.setIdHospede(DaoSupplier.getDaoHospede().findById(rs.getInt("idHospede")));
+				quartos.setIdQuarto(DaoSupplier.getDaoQuarto().findById(rs.getInt("idQuarto")));
 				quartos.setDiaria(rs.getInt("diaria"));
-				quartos.setValor(rs.getDouble("Total"));
+				quartos.setValor(rs.getDouble("total"));
 				break;
 			}			
 			
@@ -107,12 +105,7 @@ final class DaoRegistrarQuarto implements DaoBase<QuartoDados> {
 			
 			while (rs.next()) {
 				QuartoDados quarto = new QuartoDados();
-				quarto.setId(rs.getInt("id"));
-//				quarto.setNomeHospede(rs.getString("nome"));
-//				quarto.setNumeroQuarto(rs.getInt("NUMEROQ"));
-//				quarto.setTipoQuarto(tipoQuarto);
-//				quarto.setNomeServico(rs.getString("nome"));
-//				quarto.setPrecoServico(rs.getDouble("valor"));
+				quarto = findById(rs.getInt("id"));
 				quartos.add(quarto);
 			}			
 			
@@ -122,6 +115,24 @@ final class DaoRegistrarQuarto implements DaoBase<QuartoDados> {
 			e.printStackTrace();
 		}			
 		return quartos;
+	}
+
+	@Override
+	public List<QuartoDados> findAllOcupados() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<QuartoDados> findAllDisponiveis() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void checkout(QuartoDados object) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

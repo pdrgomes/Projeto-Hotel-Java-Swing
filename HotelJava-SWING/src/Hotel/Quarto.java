@@ -6,9 +6,15 @@ public class Quarto {
 	private double precoQuarto;
 	private TipoQuarto tipoQuarto;
 	private int  diarias;
+	private boolean statusQuarto;
+
 	
-	
-	
+	public boolean isStatusQuarto() {
+		return statusQuarto;
+	}
+	public void setStatusQuarto(boolean statusQuarto) {
+		this.statusQuarto = statusQuarto;
+	}
 	public int getId() {
 		return id;
 	}
@@ -41,7 +47,7 @@ public class Quarto {
 	}
 	@Override
 	public String toString() {
-		return "Numero Quarto: " + numQuarto + "  |   Valor:" + precoQuarto + "  |   Tipo de Quarto:" + tipoQuarto ;
+		return "Numero Quarto: " + numQuarto + "  |   Valor:" + precoQuarto + "  |   Tipo de Quarto:" + tipoQuarto + " | Status: "+statusQuarto ;
 	}
 	
 	
