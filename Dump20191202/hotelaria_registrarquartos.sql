@@ -16,32 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `camareiraquarto`
+-- Table structure for table `registrarquartos`
 --
 
-DROP TABLE IF EXISTS `camareiraquarto`;
+DROP TABLE IF EXISTS `registrarquartos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `camareiraquarto` (
+CREATE TABLE `registrarquartos` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ID_Camareira` int(11) NOT NULL,
-  `ID_Quarto` int(11) NOT NULL,
-  `QuartoLimpo` tinyint(1) DEFAULT NULL,
+  `idHospede` int(11) NOT NULL,
+  `idQuarto` int(11) NOT NULL,
+  `diaria` int(11) DEFAULT NULL,
+  `total` double DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `ID_Camareira` (`ID_Camareira`),
-  KEY `ID_Quarto` (`ID_Quarto`),
-  CONSTRAINT `camareiraquarto_ibfk_1` FOREIGN KEY (`ID_Camareira`) REFERENCES `camareira` (`ID`),
-  CONSTRAINT `camareiraquarto_ibfk_2` FOREIGN KEY (`ID_Quarto`) REFERENCES `quarto` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `idHospede` (`idHospede`),
+  KEY `idQuarto` (`idQuarto`),
+  CONSTRAINT `registrarquartos_ibfk_1` FOREIGN KEY (`idHospede`) REFERENCES `hospede` (`ID`),
+  CONSTRAINT `registrarquartos_ibfk_2` FOREIGN KEY (`idQuarto`) REFERENCES `quarto` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `camareiraquarto`
+-- Dumping data for table `registrarquartos`
 --
 
-LOCK TABLES `camareiraquarto` WRITE;
-/*!40000 ALTER TABLE `camareiraquarto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `camareiraquarto` ENABLE KEYS */;
+LOCK TABLES `registrarquartos` WRITE;
+/*!40000 ALTER TABLE `registrarquartos` DISABLE KEYS */;
+INSERT INTO `registrarquartos` VALUES (1,17,7,5,500),(2,17,6,3,500),(3,17,11,3,800),(4,17,7,6,800),(5,17,11,3,800),(6,17,8,3,800),(7,17,7,4,500),(8,17,6,5,500),(9,26,6,2,800),(10,17,8,7,800),(11,28,10,6,500),(12,28,8,5,8797);
+/*!40000 ALTER TABLE `registrarquartos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-25 18:12:29
+-- Dump completed on 2019-12-02 17:39:39

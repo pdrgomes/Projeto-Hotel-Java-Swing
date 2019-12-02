@@ -135,4 +135,10 @@ final class DaoRegistrarQuarto implements DaoBase<QuartoDados> {
 		
 	}
 
+	@Override
+	public void updateFalse(QuartoDados object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

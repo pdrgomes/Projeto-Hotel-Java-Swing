@@ -16,34 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `registrarquartos`
+-- Table structure for table `tipoquarto`
 --
 
-DROP TABLE IF EXISTS `registrarquartos`;
+DROP TABLE IF EXISTS `tipoquarto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `registrarquartos` (
+CREATE TABLE `tipoquarto` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `idHospede` int(11) NOT NULL,
-  `idQuarto` int(11) NOT NULL,
-  `diaria` int(11) DEFAULT NULL,
-  `total` double DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `idHospede` (`idHospede`),
-  KEY `idQuarto` (`idQuarto`),
-  CONSTRAINT `registrarquartos_ibfk_1` FOREIGN KEY (`idHospede`) REFERENCES `hospede` (`ID`),
-  CONSTRAINT `registrarquartos_ibfk_2` FOREIGN KEY (`idQuarto`) REFERENCES `quarto` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `NOME` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `registrarquartos`
+-- Dumping data for table `tipoquarto`
 --
 
-LOCK TABLES `registrarquartos` WRITE;
-/*!40000 ALTER TABLE `registrarquartos` DISABLE KEYS */;
-INSERT INTO `registrarquartos` VALUES (1,17,7,5,500),(2,17,6,3,500),(3,17,11,3,800),(4,17,7,6,800),(5,17,11,3,800),(6,17,8,3,800),(7,17,7,4,500),(8,17,6,5,500);
-/*!40000 ALTER TABLE `registrarquartos` ENABLE KEYS */;
+LOCK TABLES `tipoquarto` WRITE;
+/*!40000 ALTER TABLE `tipoquarto` DISABLE KEYS */;
+INSERT INTO `tipoquarto` VALUES (6,'Quarto Simples'),(9,'Master Plus');
+/*!40000 ALTER TABLE `tipoquarto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-25 18:12:31
+-- Dump completed on 2019-12-02 17:39:37

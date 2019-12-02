@@ -22,7 +22,7 @@ public class PesquisaHospede extends JInternalFrame {
 private JList list;
 
 	public PesquisaHospede() {
-		setBounds(100, 100, 576, 300);
+		setBounds(100, 100, 839, 336);
 		getContentPane().setLayout(null);
 		
 		
@@ -48,7 +48,7 @@ private JList list;
 		
 		Object[] hosp = DaoSupplier.getDaoHospede().findAll().toArray() ;
 		JComboBox comboBox = new JComboBox(hosp);
-		comboBox.setBounds(10, 71, 516, 26);
+		comboBox.setBounds(10, 71, 743, 26);
 		getContentPane().add(comboBox);
 
 	}

@@ -7,6 +7,7 @@ import Hotel.Quarto;
 public interface DaoBase<T> {
 	void insert (T object);
 	void update(T object);
+	void updateFalse(T object);
 	void checkout(T object);
 	void delete(int id);
 	T findById(int id);

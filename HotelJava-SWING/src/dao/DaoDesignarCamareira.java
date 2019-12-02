@@ -133,4 +133,10 @@ final class DaoDesignarCamareira implements DaoBase<CamareiraQuarto> {
 		
 	}
 
+	@Override
+	public void updateFalse(CamareiraQuarto object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

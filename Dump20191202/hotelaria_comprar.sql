@@ -16,28 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `camareira`
+-- Table structure for table `comprar`
 --
 
-DROP TABLE IF EXISTS `camareira`;
+DROP TABLE IF EXISTS `comprar`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `camareira` (
+CREATE TABLE `comprar` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(255) NOT NULL,
-  `Disponibilidade` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `ID_HOSPEDE` int(11) NOT NULL,
+  `ID_QUARTO` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_ID_HOSPEDE` (`ID_HOSPEDE`),
+  KEY `FK_ID_QUARTO` (`ID_QUARTO`),
+  CONSTRAINT `FK_ID_HOSPEDE` FOREIGN KEY (`ID_HOSPEDE`) REFERENCES `hospede` (`ID`),
+  CONSTRAINT `FK_ID_QUARTO` FOREIGN KEY (`ID_QUARTO`) REFERENCES `quarto` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `camareira`
+-- Dumping data for table `comprar`
 --
 
-LOCK TABLES `camareira` WRITE;
-/*!40000 ALTER TABLE `camareira` DISABLE KEYS */;
-INSERT INTO `camareira` VALUES (1,'Maria',1),(2,'Madalena da Rosa',1);
-/*!40000 ALTER TABLE `camareira` ENABLE KEYS */;
+LOCK TABLES `comprar` WRITE;
+/*!40000 ALTER TABLE `comprar` DISABLE KEYS */;
+INSERT INTO `comprar` VALUES (3,25,6),(4,18,7),(6,22,10),(7,18,10);
+/*!40000 ALTER TABLE `comprar` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-25 18:12:30
+-- Dump completed on 2019-12-02 17:39:38

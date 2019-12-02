@@ -16,27 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tipoquarto`
+-- Table structure for table `comprarservico`
 --
 
-DROP TABLE IF EXISTS `tipoquarto`;
+DROP TABLE IF EXISTS `comprarservico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tipoquarto` (
+CREATE TABLE `comprarservico` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `NOME` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `ID_COMPRA` int(11) NOT NULL,
+  `ID_SERVICO` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_ComprarServico` (`ID_COMPRA`),
+  KEY `FK_Servico` (`ID_SERVICO`),
+  CONSTRAINT `FK_ComprarServico` FOREIGN KEY (`ID_COMPRA`) REFERENCES `comprar` (`ID`),
+  CONSTRAINT `FK_Servico` FOREIGN KEY (`ID_SERVICO`) REFERENCES `servico` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tipoquarto`
+-- Dumping data for table `comprarservico`
 --
 
-LOCK TABLES `tipoquarto` WRITE;
-/*!40000 ALTER TABLE `tipoquarto` DISABLE KEYS */;
-INSERT INTO `tipoquarto` VALUES (6,'Quarto Simples'),(9,'Master Plus');
-/*!40000 ALTER TABLE `tipoquarto` ENABLE KEYS */;
+LOCK TABLES `comprarservico` WRITE;
+/*!40000 ALTER TABLE `comprarservico` DISABLE KEYS */;
+INSERT INTO `comprarservico` VALUES (1,6,6),(2,4,7),(3,6,6),(4,6,7);
+/*!40000 ALTER TABLE `comprarservico` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-25 18:12:29
+-- Dump completed on 2019-12-02 17:39:37

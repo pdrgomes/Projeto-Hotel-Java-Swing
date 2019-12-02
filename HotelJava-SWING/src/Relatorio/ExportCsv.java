@@ -79,13 +79,13 @@ public class ExportCsv extends JInternalFrame{
 				
 				arquivo = new File("C:\\Users\\pedro.gomes\\downloads\\");
 				arquivo.mkdir();
-				
+
 				String conteudo = "TESTANDO 1231231312312"; //essa string aqui voce ja tem! eh o q vai ser gravado
 				FileWriter fw;
 				
 				if (arquivo.isDirectory()){
 					try {
-						fw = new FileWriter("TESTEss.xlsx", false);
+						fw = new FileWriter("Relatorio.xlsx", false);
 						fw.write(conteudo);
 						fw.flush();
 						fw.close();

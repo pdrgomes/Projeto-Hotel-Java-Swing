@@ -16,32 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `comprar`
+-- Table structure for table `camareiraquarto`
 --
 
-DROP TABLE IF EXISTS `comprar`;
+DROP TABLE IF EXISTS `camareiraquarto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comprar` (
+CREATE TABLE `camareiraquarto` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ID_HOSPEDE` int(11) NOT NULL,
-  `ID_QUARTO` int(11) NOT NULL,
+  `ID_Camareira` int(11) NOT NULL,
+  `ID_Quarto` int(11) NOT NULL,
+  `QuartoLimpo` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `FK_ID_HOSPEDE` (`ID_HOSPEDE`),
-  KEY `FK_ID_QUARTO` (`ID_QUARTO`),
-  CONSTRAINT `FK_ID_HOSPEDE` FOREIGN KEY (`ID_HOSPEDE`) REFERENCES `hospede` (`ID`),
-  CONSTRAINT `FK_ID_QUARTO` FOREIGN KEY (`ID_QUARTO`) REFERENCES `quarto` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `ID_Camareira` (`ID_Camareira`),
+  KEY `ID_Quarto` (`ID_Quarto`),
+  CONSTRAINT `camareiraquarto_ibfk_1` FOREIGN KEY (`ID_Camareira`) REFERENCES `camareira` (`ID`),
+  CONSTRAINT `camareiraquarto_ibfk_2` FOREIGN KEY (`ID_Quarto`) REFERENCES `quarto` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `comprar`
+-- Dumping data for table `camareiraquarto`
 --
 
-LOCK TABLES `comprar` WRITE;
-/*!40000 ALTER TABLE `comprar` DISABLE KEYS */;
-INSERT INTO `comprar` VALUES (3,25,6),(4,18,7),(6,22,10),(7,18,10);
-/*!40000 ALTER TABLE `comprar` ENABLE KEYS */;
+LOCK TABLES `camareiraquarto` WRITE;
+/*!40000 ALTER TABLE `camareiraquarto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `camareiraquarto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-25 18:12:30
+-- Dump completed on 2019-12-02 17:39:37

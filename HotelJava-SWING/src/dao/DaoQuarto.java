@@ -175,4 +175,10 @@ final class DaoQuarto implements DaoBase<Quarto> {
 		return quartos;
 	}
 
+	@Override
+	public void updateFalse(Quarto object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

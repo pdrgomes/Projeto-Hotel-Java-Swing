@@ -16,28 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `servico`
+-- Table structure for table `hospede`
 --
 
-DROP TABLE IF EXISTS `servico`;
+DROP TABLE IF EXISTS `hospede`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `servico` (
+CREATE TABLE `hospede` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `NOME` varchar(100) NOT NULL,
-  `VALOR` double NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `IDADE` int(11) DEFAULT NULL,
+  `TELEFONE` varchar(200) NOT NULL,
+  `EMAIL` varchar(200) NOT NULL,
+  `idpagamento` int(11) NOT NULL,
+  `Status_hospede` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `idpagamento` (`idpagamento`),
+  CONSTRAINT `hospede_ibfk_1` FOREIGN KEY (`idpagamento`) REFERENCES `metodopagamento` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `servico`
+-- Dumping data for table `hospede`
 --
 
-LOCK TABLES `servico` WRITE;
-/*!40000 ALTER TABLE `servico` DISABLE KEYS */;
-INSERT INTO `servico` VALUES (5,'limpeza',9.9),(6,'almoço',20),(7,'café',5),(9,'LIMPEZA',19.9);
-/*!40000 ALTER TABLE `servico` ENABLE KEYS */;
+LOCK TABLES `hospede` WRITE;
+/*!40000 ALTER TABLE `hospede` DISABLE KEYS */;
+INSERT INTO `hospede` VALUES (17,'Pedro',20,'(51) 98604-2381','pedro@viaflow.com.br',7,1),(18,'TESTE PEDRO',22,'51 99999','testepedro@gmail.com',8,NULL),(19,'ph',20,'51986042381','pedro@viaflow.com',7,NULL),(21,'Pedro Gomes',21,'51 986042381','pedro.gomes@viaflow.com',7,NULL),(22,'Juliano',30,'51 9999999','juliano@viaflow.com',7,NULL),(23,'Juliano',30,'51 9999999','juliano@viaflow.com',7,NULL),(24,'Mateeus',18,'(51) 999999','matheus@viaflow.com.br',7,NULL),(25,'Pedro Rosa',20,'(51) 999999','pedro.gomes@viaflow.com.br',7,NULL),(26,'Marlon Reis',30,'(51) 99217-3127','marlon@gmail.com',10,1),(27,'Luigi',26,'(51) 99238-4234','luigi@gmail.com',8,0),(28,'Jaime',40,'51 999999999','jaime@gmail.com',8,0);
+/*!40000 ALTER TABLE `hospede` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-25 18:12:29
+-- Dump completed on 2019-12-02 17:39:38

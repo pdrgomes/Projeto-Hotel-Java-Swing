@@ -22,7 +22,7 @@ import javax.swing.JComboBox;
 public class PesquisarQuarto extends JInternalFrame {
 	
 	public PesquisarQuarto() {
-		setBounds(100, 100, 548, 300);
+		setBounds(100, 100, 765, 305);
 		getContentPane().setLayout(null);
 		
 		JLabel lblQuartosCadastrados = new JLabel("QUARTOS CADASTRADOS");
@@ -33,7 +33,7 @@ public class PesquisarQuarto extends JInternalFrame {
 		JLabel lblSAIR = new JLabel("SAIR");
 		lblSAIR.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblSAIR.setForeground(new Color(128, 0, 0));
-		lblSAIR.setBounds(476, 11, 46, 14);
+		lblSAIR.setBounds(697, 11, 46, 14);
 		lblSAIR.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -44,7 +44,7 @@ public class PesquisarQuarto extends JInternalFrame {
 		
 		Object[] quarto = DaoSupplier.getDaoQuarto().findAll().toArray() ;
 		JComboBox comboBox = new JComboBox(quarto);
-		comboBox.setBounds(31, 76, 468, 20);
+		comboBox.setBounds(31, 76, 619, 20);
 		getContentPane().add(comboBox);
 
 	}

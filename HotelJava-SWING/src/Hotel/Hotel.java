@@ -6,6 +6,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Alterar.AlterarHospede;
 import Cadastrar.CadastrarCamareira;
 import Cadastrar.CadastrarServico;
 import Cadastrar.CadastroHospede;
@@ -148,6 +149,20 @@ public class Hotel extends JFrame {
 			cadServico.setVisible(true);
 		});
 		mnCadastros.add(mntmCadastrarServios);
+		
+		
+		JMenu mAlterar = new JMenu("Alterar");
+		mAlterar.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 16));
+		mAlterar.setForeground(Color.BLACK);
+		menuBar.add(mAlterar);
+		
+		JMenuItem mntmAlterarHospede = new JMenuItem("Alterar Status Hospede");
+			mntmAlterarHospede.addActionListener(event -> {
+				AlterarHospede altHospede = new AlterarHospede();
+				contentPane.add(altHospede);
+				altHospede.setVisible(true);
+			});
+			mAlterar.add(mntmAlterarHospede);
 		
 		//-------------------------------------------------------------
 		//--------DESIGNAR QUARTO--------------------------------------

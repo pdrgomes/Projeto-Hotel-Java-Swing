@@ -125,4 +125,10 @@ final class DaoMetodoPagamento implements DaoBase<MetodoPagamento> {
 		
 	}
 
+	@Override
+	public void updateFalse(MetodoPagamento object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

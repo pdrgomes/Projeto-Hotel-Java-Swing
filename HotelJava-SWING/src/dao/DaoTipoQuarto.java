@@ -125,4 +125,10 @@ final class DaoTipoQuarto implements DaoBase<TipoQuarto> {
 		
 	}
 
+	@Override
+	public void updateFalse(TipoQuarto object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

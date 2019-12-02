@@ -131,4 +131,10 @@ final class DaoComprar implements DaoBase<Comprar> {
 		
 	}
 
+	@Override
+	public void updateFalse(Comprar object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

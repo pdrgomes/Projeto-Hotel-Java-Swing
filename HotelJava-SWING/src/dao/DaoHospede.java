@@ -18,7 +18,7 @@ final class DaoHospede implements DaoBase<Hospede> {
 	@Override
 	public void insert(Hospede object) {
 		
-		String query = " insert into hospede (nome, idade, telefone, email, idpagamento)" + " values (?,?,?,?,?)";
+		String query = " insert into hospede (nome, idade, telefone, email, idpagamento, status_Hospede)" + " values (?,?,?,?,?,?)";
 		
 		PreparedStatement preparedStmt = null;
 		try {
@@ -28,6 +28,7 @@ final class DaoHospede implements DaoBase<Hospede> {
 			preparedStmt.setString(3, object.getTelefone());
 			preparedStmt.setString(4, object.getEmail());
 			preparedStmt.setInt(5, object.getMetPagamento().getId());
+			preparedStmt.setBoolean(6, true);
 			preparedStmt.execute();
 			preparedStmt.close();
 		} catch (SQLException e) {
@@ -38,17 +39,35 @@ final class DaoHospede implements DaoBase<Hospede> {
 
 	@Override
 	public void update(Hospede object) {
-		String query = " update hospede set nome = ? where id = ?";
+		String query = " update hospede set status_hospede = ? where id = ?";
 		
 		PreparedStatement preparedStmt = null;
 		try {
 			preparedStmt = ConnectionMySql.getConn().prepareStatement(query);
-			preparedStmt.setInt(1, object.getId());
-			preparedStmt.setString(2, object.getNome());
+			preparedStmt.setInt(1, 1);
+			preparedStmt.setInt(2, object.getId());
 //			preparedStmt.setInt(3, object.getIdade());
 //			preparedStmt.setString(4,  object.getTelefone());
 //			preparedStmt.setString(5, object.getEmail());
 //			preparedStmt.setString(6, "teste");
+			preparedStmt.execute();
+			preparedStmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void updateFalse(Hospede object) {
+		String query = " update hospede set status_hospede = ? where id = ?";
+		
+		PreparedStatement preparedStmt = null;
+		try {
+			preparedStmt = ConnectionMySql.getConn().prepareStatement(query);
+			preparedStmt.setInt(1, 0);
+			preparedStmt.setInt(2, object.getId());
+
 			preparedStmt.execute();
 			preparedStmt.close();
 		} catch (SQLException e) {
@@ -83,8 +102,7 @@ final class DaoHospede implements DaoBase<Hospede> {
 				hospede.setTelefone(rs.getString("telefone"));
 				hospede.setEmail(rs.getString("email"));
 				hospede.setMetPagamento(DaoSupplier.getDaoMetodoPagamento().findById(rs.getInt("idpagamento")));
-				
-
+				hospede.setStatusHospede(rs.getBoolean("status_Hospede"));
 				
 				break;
 			}			
