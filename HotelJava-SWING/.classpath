@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="C:/Users/pedro.gomes/.p2/pool/plugins/org.eclipse.ui.forms_3.8.0.v20190519-1034.jar" sourcepath="C:/Users/pedro.gomes/.p2/pool/plugins/org.eclipse.ui.forms_3.8.0.v20190519-1034.jar"/>
 	<classpathentry kind="lib" path="mysql-connector-java-8.0.15.jar"/>
 	<classpathentry kind="lib" path="poi-ooxml-3.5-beta4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/pedro.gomes/Downloads/java-2.2.0/java-2.2.0/pagseguro-api-2.2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
